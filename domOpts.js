@@ -51,6 +51,19 @@ HTMLElement.prototype.domRemoveClass = function (removeableClasses) {
     return this;
 };
 
+// dom operations:
+HTMLElement.prototype.domHasClass = function (className) {
+    "use strict";
+    var classes = this.getAttribute('class'), currentClasses, i;
+    if (classes !== null) {
+        currentClasses = classes.split(' ');
+        for (i = 0; i < currentClasses.length; i++) {
+            if (currentClasses[i] === className) {return true; }
+        }
+    }
+    return false;
+};
+
 HTMLElement.prototype.domRemove = function () {
     "use strict";
     this.parentNode.removeChild(this);

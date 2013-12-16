@@ -30,11 +30,17 @@ module.exports =  domOpts;
 // dom operations:
 HTMLElement.prototype.domAddClass = function (addClasses) {
     "use strict";
-    var attrClass = this.getAttribute('class');
-    this.setAttribute('class', attrClass !== null ? attrClass + ' ' + addClasses : addClasses);
+    var attrClass = this.getAttribute('class'),
+        addClassesList = addClasses.split(' '), newClasses = [], i;
+    for (i = 0; i < addClassesList.length; i++) {
+        if (!this.domHasClass(addClassesList[i])) {
+            newClasses.push(addClassesList[i]);
+        }
+    }
+    this.setAttribute('class', attrClass !== null ? attrClass + ' ' + newClasses.join(' ') : newClasses.join(' '));
     return this;
 };
-
+// TOOD remove all classes with same name
 HTMLElement.prototype.domRemoveClass = function (removeableClasses) {
     "use strict";
     var removeClasses = (removeableClasses && removeableClasses.split(' ')) || this.getAttribute('class').split(' '),

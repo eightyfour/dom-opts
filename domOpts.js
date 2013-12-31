@@ -40,7 +40,7 @@ HTMLElement.prototype.domAddClass = function (addClasses) {
     this.setAttribute('class', attrClass !== null ? attrClass + ' ' + newClasses.join(' ') : newClasses.join(' '));
     return this;
 };
-// TOOD remove all classes with same name
+// TODO remove all classes with same name
 HTMLElement.prototype.domRemoveClass = function (removeableClasses) {
     "use strict";
     var removeClasses = (removeableClasses && removeableClasses.split(' ')) || this.getAttribute('class').split(' '),
@@ -88,4 +88,15 @@ HTMLElement.prototype.domAppendTo = function (elem) {
     }
     node.appendChild(this);
     return this;
+};
+
+HTMLElement.prototype.domChildTags = function (tag) {
+    "use strict";
+    var tags = [];
+    Array.prototype.slice.call(this.children).forEach(function (e) {
+        if (e.tagName.toLowerCase() === tag.toLowerCase()) {
+            tags.push(e);
+        }
+    });
+    return tags;
 };

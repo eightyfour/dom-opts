@@ -69,7 +69,6 @@ HTMLElement.prototype.domHasClass = function (className) {
         currentClasses = classes.split(' ');
         for (i = 0; i < currentClasses.length; i++) {
             if (currentClasses[i] === className) {return true; }
-            if (currentClasses[i] === className) {return true; }
         }
     }
     return false;

@@ -89,6 +89,16 @@ HTMLElement.prototype.domAppendTo = function (elem) {
     return this;
 };
 
+HTMLElement.prototype.domAppendChild = function (elem) {
+    "use strict";
+    var node = elem;
+    if (typeof node === 'string') {
+        node = document.getElementById(node);
+    }
+    this.appendChild(node);
+    return this;
+};
+
 HTMLElement.prototype.domChildTags = function (tag) {
     "use strict";
     var tags = [];

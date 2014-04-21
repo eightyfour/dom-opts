@@ -84,7 +84,7 @@ HTMLElement.prototype.domRemove = function () {
 HTMLElement.prototype.domEmpty = function () {
     "use strict";
     Array.prototype.slice.call(this.children).forEach(function (child) {
-        child.removeChild(this);
+        child.domRemove(this);
     });
 };
 

@@ -78,6 +78,15 @@ HTMLElement.prototype.domRemove = function () {
     "use strict";
     this.parentNode.removeChild(this);
 };
+/**
+ * remove all child elements from node
+ */
+HTMLElement.prototype.domEmpty = function () {
+    "use strict";
+    Array.prototype.slice.call(this.children).forEach(function (child) {
+        child.removeChild(this);
+    });
+};
 
 HTMLElement.prototype.domAppendTo = function (elem) {
     "use strict";
